@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电脑端返回调试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #ff0000;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #ff6666;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .debug-container {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        pre {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        .button-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 10px 25px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
+        }
+        .step {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 20px;
+        }
+        .success {
+            color: #4CAF50;
+        }
+        .error {
+            color: #f44336;
+        }
+        .info {
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-container">
+        <h1>电脑端返回功能调试工具</h1>
+        
+        <div class="step">
+            <h2>步骤1：测试直接访问带参数的主页</h2>
+            <p>点击下面的按钮直接测试访问带desktop=true参数的主页：</p>
+            <div class="button-group">
+                <button id="test-desktop-param">访问 index.html?desktop=true</button>
+                <button id="test-mobile-param">访问 index.html?mobile=true</button>
+            </div>
+        </div>
+        
+        <div class="step">
+            <h2>步骤2：测试功能页面返回流程</h2>
+            <p>先访问功能页面，再通过返回按钮返回主页：</p>
+            <div class="button-group">
+                <button id="go-to-feature1">访问功能1电脑端</button>
+                <button id="go-to-feature2">访问功能2电脑端</button>
+            </div>
+        </div>
+        
+        <div class="step">
+            <h2>调试信息</h2>
+            <pre id="debug-log">页面已加载，等待测试...</pre>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const debugLog = document.getElementById('debug-log');
+            const testDesktopParamBtn = document.getElementById('test-desktop-param');
+            const testMobileParamBtn = document.getElementById('test-mobile-param');
+            const goToFeature1Btn = document.getElementById('go-to-feature1');
+            const goToFeature2Btn = document.getElementById('go-to-feature2');
+            
+            // 添加日志信息
+            function log(message, type = 'info') {
+                const timestamp = new Date().toLocaleTimeString();
+                let prefix = '';
+                
+                switch(type) {
+                    case 'success':
+                        prefix = '[✅ ' + timestamp + ']';
+                        break;
+                    case 'error':
+                        prefix = '[❌ ' + timestamp + ']';
+                        break;
+                    default:
+                        prefix = '[ℹ️ ' + timestamp + ']';
+                }
+                
+                debugLog.textContent += '\n' + prefix + ' ' + message;
+                console.log(prefix + ' ' + message);
+            }
+            
+            // 初始化页面
+            log('调试工具已启动', 'success');
+            log('当前页面: ' + window.location.href);
+            
+            // 测试直接访问带desktop=true参数的主页
+            testDesktopParamBtn.addEventListener('click', function() {
+                log('点击测试 desktop=true 参数');
+                log('即将跳转到: index.html?desktop=true');
+                window.location.href = 'index.html?desktop=true';
+            });
+            
+            // 测试直接访问带mobile=true参数的主页
+            testMobileParamBtn.addEventListener('click', function() {
+                log('点击测试 mobile=true 参数');
+                log('即将跳转到: index.html?mobile=true');
+                window.location.href = 'index.html?mobile=true';
+            });
+            
+            // 访问功能1电脑端
+            goToFeature1Btn.addEventListener('click', function() {
+                log('点击访问功能1电脑端');
+                log('即将跳转到: feature1-desktop.html');
+                window.location.href = 'feature1-desktop.html';
+            });
+            
+            // 访问功能2电脑端
+            goToFeature2Btn.addEventListener('click', function() {
+                log('点击访问功能2电脑端');
+                log('即将跳转到: feature2-desktop.html');
+                window.location.href = 'feature2-desktop.html';
+            });
+        });
+    </script>
+</body>
+</html>

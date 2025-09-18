@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>返回功能测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .red-button {
+            background-color: #f44336;
+        }
+        .red-button:hover {
+            background-color: #d32f2f;
+        }
+        .debug-info {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .clear-button {
+            background-color: #2196F3;
+        }
+        .clear-button:hover {
+            background-color: #0b7dda;
+        }
+        .feature-button {
+            background-color: #9C27B0;
+        }
+        .feature-button:hover {
+            background-color: #7b1fa2;
+        }
+        .back-button {
+            background-color: #e74c3c;
+        }
+        .back-button:hover {
+            background-color: #c0392b;
+        }
+        .test-section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>返回功能全面测试页面</h1>
+    
+    <div id="debug-info" class="debug-info">
+        <span>调试信息将显示在这里...</span>
+    </div>
+    
+    <div class="test-container">
+        <h2>测试控制面板</h2>
+        <button id="clear-log" class="button clear-button">清除日志</button>
+        <button id="check-url" class="button">检查当前URL参数</button>
+    </div>
+    
+    <div class="test-container">
+        <h2>1. 直接跳转测试</h2>
+        <p>测试直接带参数跳转到index.html的功能</p>
+        <button id="test-direct" class="button">带参数返回主页 (mobile=true)</button>
+        <button id="test-direct-no-params" class="button">不带参数返回主页</button>
+    </div>
+    
+    <div class="test-container">
+        <h2>2. 模拟功能页面环境</h2>
+        <p>模拟功能页面中的返回按钮逻辑</p>
+        <div id="feature-simulation">
+            <button id="back-button-test" class="button back-button">返回主页</button>
+            <div style="margin-top: 20px;">
+                <p><em>点击上方按钮模拟返回操作</em></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>3. 真实功能页面测试</h2>
+        <p>直接测试真实的功能页面</p>
+        <button id="test-feature2" class="button feature-button">打开功能2页面</button>
+        <button id="test-feature4" class="button feature-button">打开功能4页面</button>
+    </div>
+    
+    <script>
+        // 简单的日志函数，将信息添加到调试区域
+        function logDebug(message) {
+            const debugElement = document.getElementById('debug-info');
+            if (debugElement) {
+                debugElement.innerHTML += '\n' + new Date().toLocaleTimeString() + ': ' + message;
+                debugElement.scrollTop = debugElement.scrollHeight;
+            }
+            console.log(message);
+        }
+        
+        // 清除日志
+        function clearLog() {
+            const debugElement = document.getElementById('debug-info');
+            if (debugElement) {
+                debugElement.innerHTML = '日志已清除\n' + new Date().toLocaleTimeString() + ': 准备记录新的调试信息...';
+            }
+        }
+        
+        // 初始化调试区域
+        logDebug('===== 测试页面已加载 =====');
+        logDebug('当前URL: ' + window.location.href);
+        logDebug('此页面提供多种测试方式来检查返回功能');
+        
+        // 测试1: 直接带参数跳转
+        document.getElementById('test-direct').addEventListener('click', function() {
+            logDebug('\n===== 开始测试: 直接带参数返回主页 =====');
+            logDebug('准备跳转到: index.html?mobile=true');
+            window.location.href = 'index.html?mobile=true';
+        });
+        
+        // 测试1.1: 不带参数跳转
+        document.getElementById('test-direct-no-params').addEventListener('click', function() {
+            logDebug('\n===== 开始测试: 不带参数返回主页 =====');
+            logDebug('准备跳转到: index.html');
+            window.location.href = 'index.html';
+        });
+        
+        // 测试2: 模拟功能页面中的返回按钮逻辑
+        document.getElementById('back-button-test').addEventListener('click', function() {
+            logDebug('\n===== 开始测试: 模拟功能页面返回按钮 =====');
+            logDebug('返回按钮被点击');
+            
+            // 添加交互反馈效果
+            this.style.backgroundColor = '#e0e0e0';
+            logDebug('设置按钮背景色以提供反馈');
+            
+            // 延迟执行返回操作
+            logDebug('准备在100ms后跳转到: index.html?mobile=true');
+            setTimeout(() => {
+                logDebug('执行跳转操作...');
+                window.location.href = 'index.html?mobile=true';
+            }, 100);
+        });
+        
+        // 测试3: 打开真实功能页面
+        document.getElementById('test-feature2').addEventListener('click', function() {
+            logDebug('\n===== 开始测试: 打开功能2页面 =====');
+            logDebug('准备跳转到: feature2-mobile.html');
+            window.location.href = 'feature2-mobile.html';
+        });
+        
+        document.getElementById('test-feature4').addEventListener('click', function() {
+            logDebug('\n===== 开始测试: 打开功能4页面 =====');
+            logDebug('准备跳转到: feature4-mobile.html');
+            window.location.href = 'feature4-mobile.html';
+        });
+        
+        // 检查当前URL参数
+        document.getElementById('check-url').addEventListener('click', checkUrlParams);
+        
+        function checkUrlParams() {
+            logDebug('\n===== 检查URL参数 =====');
+            logDebug('当前URL: ' + window.location.href);
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.size === 0) {
+                logDebug('URL中没有参数');
+            } else {
+                logDebug('URL参数列表:');
+                for (const [key, value] of urlParams.entries()) {
+                    logDebug('  ' + key + ': ' + value);
+                }
+                
+                if (urlParams.has('mobile') && urlParams.get('mobile') === 'true') {
+                    logDebug('✅ 检测到有效的mobile=true参数');
+                } else {
+                    logDebug('❌ 未检测到有效的mobile=true参数');
+                }
+            }
+        }
+        
+        // 绑定清除日志按钮
+        document.getElementById('clear-log').addEventListener('click', clearLog);
+        
+        // 初始化时检查URL参数
+        window.onload = function() {
+            checkUrlParams();
+        };
+    </script>
+</body>
+</html>
