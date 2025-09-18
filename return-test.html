@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>返回功能测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        h1 {
+            color: #ff0000;
+            margin-bottom: 40px;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        button {
+            padding: 15px 30px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
+        }
+        pre {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 30px;
+        }
+        .step {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .step-number {
+            font-weight: bold;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>电脑端返回功能测试</h1>
+        
+        <div class="step">
+            <span class="step-number">步骤1：</span> 点击下方按钮访问功能1电脑端页面
+        </div>
+        <div class="step">
+            <span class="step-number">步骤2：</span> 在功能页面点击"返回主页"按钮
+        </div>
+        <div class="step">
+            <span class="step-number">步骤3：</span> 检查是否正确跳转到电脑端主页（无设备选择弹窗）
+        </div>
+        
+        <div class="button-group">
+            <button id="go-to-feature1-desktop">访问功能1电脑端</button>
+            <button id="go-to-feature1-mobile">访问功能1手机端 (对比测试)</button>
+            <button id="test-desktop-url">直接测试 index.html?desktop=true</button>
+        </div>
+        
+        <div id="debug-info">
+            <p>测试日志将显示在这里...</p>
+            <pre id="log-output"></pre>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logOutput = document.getElementById('log-output');
+            const goToFeature1DesktopBtn = document.getElementById('go-to-feature1-desktop');
+            const goToFeature1MobileBtn = document.getElementById('go-to-feature1-mobile');
+            const testDesktopUrlBtn = document.getElementById('test-desktop-url');
+            
+            // 记录日志
+            function log(message) {
+                const timestamp = new Date().toLocaleTimeString();
+                logOutput.textContent += `[${timestamp}] ${message}\n`;
+                console.log(`[${timestamp}] ${message}`);
+                // 滚动到底部
+                logOutput.scrollTop = logOutput.scrollHeight;
+            }
+            
+            // 初始化日志
+            log('测试页面已加载');
+            log('当前URL:', window.location.href);
+            
+            // 访问功能1电脑端
+            goToFeature1DesktopBtn.addEventListener('click', function() {
+                log('\n点击访问功能1电脑端');
+                log('即将跳转到: feature1-desktop.html');
+                window.location.href = 'feature1-desktop.html';
+            });
+            
+            // 访问功能1手机端（对比测试）
+            goToFeature1MobileBtn.addEventListener('click', function() {
+                log('\n点击访问功能1手机端 (对比测试)');
+                log('即将跳转到: feature1-mobile.html');
+                window.location.href = 'feature1-mobile.html';
+            });
+            
+            // 直接测试index.html?desktop=true
+            testDesktopUrlBtn.addEventListener('click', function() {
+                log('\n直接测试index.html?desktop=true');
+                log('即将跳转到: index.html?desktop=true');
+                window.location.href = 'index.html?desktop=true';
+            });
+        });
+    </script>
+</body>
+</html>

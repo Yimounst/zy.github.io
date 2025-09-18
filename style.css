@@ -1,0 +1,508 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+    border: 5px solid #e74c3c; /* 统一为手机端用户按钮颜色 */
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.modal-content p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#confirm-mobile {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#confirm-mobile:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+#switch-desktop {
+    background-color: #e74c3c; /* 统一为手机端用户按钮颜色 */
+    color: white;
+}
+
+#switch-desktop:hover {
+    background-color: #c0392b; /* 统一为手机端用户按钮悬停颜色 */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+/* 隐藏主内容区域 */
+.hidden {
+    display: none;
+}
+
+/* 设备显示控制类 */
+.mobile-only {
+    display: block; /* 默认显示手机版内容 */
+}
+
+.desktop-only {
+    display: none; /* 默认隐藏电脑版内容 */
+}
+
+/* 电脑版16:9横屏图片样式 */
+.hero-image-container-desktop {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .modal-content h2 {
+        font-size: 20px;
+    }
+    
+    .modal-content p {
+        font-size: 14px;
+    }
+    
+    .modal-buttons button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* 手机版主页样式 */
+
+/* 顶部18:9竖屏图片样式 */
+.hero-image-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent; /* 移除黑色背景 */
+    transform: translateX(0);
+    left: 0;
+}
+
+.hero-image {
+    width: 100% !important;
+    height: auto;
+    display: block;
+    object-fit: contain; /* 使用contain确保完整显示图片 */
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    min-width: auto;
+}
+
+/* 针对移动设备的特别优化 */
+@media only screen and (max-device-width: 640px) {
+    html, body {
+        width: 100% !important;
+        overflow-x: hidden !important;
+        position: relative;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .hero-image-container {
+        width: 100vw !important;
+        height: auto;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        position: relative;
+        left: 0 !important;
+        transform: none !important;
+    }
+    
+    .hero-image {
+        width: 100vw !important;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* 手机端按钮四文字框样式优化 */
+    .button-description {
+        flex-direction: column;
+        gap: 8px !important;
+    }
+    
+    .text-box {
+        width: 100% !important;
+        min-height: 60px;
+        box-sizing: border-box;
+    }
+}
+
+
+/* 确保body和html没有默认的margin和padding */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* 防止横向滚动条出现 */
+}
+
+/* 四个按钮区域样式 */
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 30px 20px;
+    background-color: #f5f5f5;
+}
+
+.button-item {
+    display: flex;
+    justify-content: center;
+}
+
+/* 功能按钮样式 */
+.feature-button {
+    background-color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 15px;
+    width: 100%;
+    max-width: 180px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-button img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.feature-button span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+}
+
+/* 按钮包装器样式 */
+.button-wrapper {
+    border: 3px solid #ff0000 !important;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #fff9f9 !important; /* 淡红色背景以增强对比 */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 100;
+    outline: 1px solid #ff0000;
+    outline-offset: -1px;
+    cursor: pointer; /* 鼠标指针变为手型 */
+    transition: transform 0.2s ease; /* 添加过渡效果 */
+}
+
+/* 按钮描述文字样式 */
+.button-description {
+    color: #ff0000 !important;
+    font-size: 16px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1.2;
+    background-color: transparent !important;
+}
+
+.click-hint {
+    color: #888;
+    font-size: 10px;
+    text-align: center;
+    display: block;
+    margin-top: 8px;
+    font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 针对手机屏幕的响应式优化 */
+@media (max-width: 480px) {
+    .buttons-container {
+        gap: 15px;
+        padding: 20px 15px;
+    }
+    
+    .feature-button {
+        padding: 12px;
+        max-width: 150px;
+    }
+    
+    .feature-button img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .feature-button span {
+        font-size: 14px;
+    }
+    
+    .click-hint {
+        font-size: 9px;
+        margin-top: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .button-wrapper {
+        padding: 10px;
+        border: 3px solid #ff0000 !important;
+    }
+    
+    .button-description {
+        font-size: 14px;
+        height: 50px;
+        color: red !important;
+    }
+}
+
+/* 适应1080×2256比例图片 */
+@media (max-device-width: 768px) {
+    .hero-image-container {
+        width: 100% !important;
+        height: auto !important;
+        position: relative;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .hero-image {
+        width: 100% !important;
+        height: auto !important;
+        display: block;
+        object-fit: contain !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        min-width: auto !important;
+    }
+}
+
+/* 电脑版16:9横屏图片样式 */
+.hero-image-desktop {
+    width: 100% !important;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    min-width: 100%;
+}
+
+/* 确保主内容区域没有内边距或外边距 */
+#main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* 确保body和html没有滚动条和内边距 */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+/* 电脑端布局优化 */
+@media (min-width: 768px) {
+    /* 确保图片容器完全顶到屏幕边缘 */
+    .hero-image-container-desktop {
+        width: 100vw !important; /* 使用视口宽度确保完全顶到边缘 */
+        position: relative !important;
+        left: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        transform: none !important;
+    }
+    
+    /* 确保按钮容器不会影响图片布局 */
+    .buttons-container {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* 自定义视图强制显示规则 - 优先级高于媒体查询 */
+/* 当用户选择手机版时，强制显示手机版内容 */
+body.force-mobile-view .mobile-only {
+    display: block !important;
+}
+
+body.force-mobile-view .desktop-only {
+    display: none !important;
+}
+
+/* 当用户选择电脑版时，强制显示电脑版内容 */
+body.force-desktop-view .mobile-only {
+    display: none !important;
+}
+
+body.force-desktop-view .desktop-only {
+    display: block !important;
+}
+
+/* 桌面端响应式设计 */
+@media (min-width: 768px) {
+    /* 切换显示/隐藏设备特定内容 */
+    .mobile-only {
+        display: none !important;
+    }
+    
+    .desktop-only {
+        display: block !important;
+    }
+    
+    /* 16:9横屏图片样式 */
+    .hero-image-container-desktop {
+        width: 100%;
+        height: 500px; /* 固定高度 */
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative; /* 确保绝对定位的图片能正确定位 */
+        overflow: hidden; /* 防止图片溢出容器 */
+        display: block; /* 确保容器总是显示 */
+    }
+    
+    .hero-image-desktop {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative; /* 重置为相对定位 */
+        display: block; /* 确保图片总是显示 */
+    }
+    
+    /* 确保图片保持16:9比例 */
+    @media (min-aspect-ratio: 16/9) {
+        .hero-image-container-desktop {
+            height: 400px; /* 调整高度 */
+            position: relative;
+        }
+    }
+    
+    @media (max-aspect-ratio: 16/9) {
+        .hero-image-container-desktop {
+            height: auto;
+            padding-top: 56.25%; /* 16:9比例的padding hack */
+            position: relative;
+        }
+        
+        .hero-image-desktop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

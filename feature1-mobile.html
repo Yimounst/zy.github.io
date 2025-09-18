@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>功能1 - 手机端</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 功能1手机端特定样式 */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .feature-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 1:1比例的图片容器 */
+        .image-container {
+            width: 100%;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+        
+        .feature-image {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+        
+        /* 黑色背景区域 */
+        .description-container {
+            flex: 1;
+            background-color: black;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 白色边框容器 */
+        .white-border {
+            border: 5px solid white;
+            border-radius: 15px;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /* 返回按钮 */
+        .back-button {
+            margin-top: auto;
+            display: block;
+            padding: 12px 24px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .back-button:active {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 功能1手机端页面 -->
+    <div class="feature-container">
+        <!-- 1:1比例的介绍图片 -->
+        <div class="image-container">
+            <img src="images/gn1.jpg" alt="功能1介绍" class="feature-image">
+        </div>
+        
+        <!-- 黑色背景区域 -->
+        <div class="description-container">
+            <!-- 白色5px边框容器 -->
+            <div class="white-border">
+                <h1 class="feature-title">Any无尽网络工作室</h1>
+                <p class="feature-description">无尽网络工作室起源于2018年开始进行的单机游戏开发项目，2024年，Kevin拉拢实验室学生退出并重新成立Any软件工作室，随着香港大学，南洋理工大学，华中科技大学，华北电力大学和暨南大学的教授和学生的加入，无尽网络已经成为一家专业于轻量化移动端应用开发的软件工作室。</p>
+                <p class="feature-description">更多信息将于10月中旬招新开始后公布披露</p>
+                <button class="back-button">返回主页</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="feature-script.js"></script>
+</body>
+</html>

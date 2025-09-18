@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>功能2 - 手机端</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 功能2手机端特定样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* 容器设置 */
+        .feature-container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 1:1比例的图片容器 */
+        .image-container {
+            width: 100%;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+        
+        .feature-image {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+        
+        /* 红色背景区域 */
+        .red-background {
+            background-color: #ff0000;
+            padding: 20px;
+        }
+        
+        /* 白色背景区域 */
+        .white-background {
+            background-color: white;
+            padding: 20px;
+        }
+        
+        /* 白色边框容器 */
+        .white-border {
+            border: 5px solid white;
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+        }
+        
+        /* 红色边框容器 */
+        .red-border {
+            border: 5px solid #ff0000;
+            border-radius: 15px;
+            padding: 20px;
+            color: #ff0000;
+        }
+        
+        /* 标题样式 */
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        /* 描述文本样式 */
+        .section-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        /* 返回按钮 */
+        .back-button {
+            margin: 20px;
+            display: block;
+            padding: 12px 24px;
+            background-color: white;
+            color: #ff0000;
+            border: 3px solid #ff0000;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: calc(100% - 40px);
+        }
+        
+        .back-button:active {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 功能2手机端页面 -->
+    <div class="feature-container">
+        <!-- 1:1比例的介绍图片 -->
+        <div class="image-container">
+            <img src="images/2.jpg" alt="功能2介绍" class="feature-image">
+        </div>
+        
+        <!-- 红色背景区域 -->
+        <div class="red-background">
+            <!-- 白色5px边框容器 -->
+            <div class="white-border">
+                <h2 class="section-title">长川电子科技</h2>
+                <p class="section-description">长川电子科技于2020年成立，目前总部位于浙江杭州市拱墅区，目前在广西南宁，广东揭阳设有两个仓库，2025年8月后，长川电子宣布撤去广西北海和江西南昌的仓库，更换了全新的技术团队，裁员降本增效，效益稳定性上升显著.目前，公司目标年净利润高达71.1%，成为Dreaming旗下最赚钱的项目。</p>
+            </div>
+        </div>
+        
+        <!-- 白色背景区域 -->
+        <div class="white-background">
+            <!-- 红色5px边框容器 -->
+            <div class="red-border">
+                <h2 class="section-title">投资分析与建议</h2>
+                <p class="section-description">2025 年 9 月，长川电子完成经营场所搬迁后正式恢复运营，当月实现净利润率 5.9%。若按年均 11 个月正常营业周期测算，其年化净利润率高达 89.8%，经营效益表现突出。​
+为我项目潮阳籍投资人邵先生分析的中南财经政法大学郑先生指出，高科技重资产企业的运营成效高度依赖管理体系搭建与核心人才储备。回溯长川电子 2025 年经营轨迹：自 2 月启动本年度运营并开始私人融资以来，企业先后经历业务扩张与战略调整两轮发展探索；上季度时任管理团队（备注：郑教授所指即张经理）虽取得阶段性业绩成果，但自 6 月新任管理负责人（备注：郑教授所指王经理）履职后，其资深行业经验快速转化为经营效能 —— 仅通过 1 个月专项攻坚，即完成前任团队遗留问题的全面处置，同步实现近 85% 库存的高效清理，并持续维系企业年度经营零亏损的稳健态势。当前，随着仓库搬迁落地与核心团队优化调整的完成，企业经营基础进一步夯实，后续业绩增长具备较高确定性。​
+从投资适配性来看，长川电子长期践行的稳健发展战略，与多数聚焦稳健收益的投资者核心诉求高度契合；且企业设定的年度盈利目标（超 70% 盈利增速）展现出强劲的增长潜力，投资价值显著。基于上述判断，我方计划在后续阶段追加对该企业的资金注入，以分享其成长红利。</p>
+            </div>
+        </div>
+        
+        <!-- 红色背景区域 -->
+        <div class="red-background">
+            <!-- 白色5px边框容器 -->
+            <div class="white-border">
+                <h2 class="section-title">历史营业利润</h2>
+                <p class="section-description">9月份 +5.9%</p>
+                <p class="section-description">8月份 +6.2%</p>
+                <p class="section-description">7月份 +3.9%</p>
+                <p class="section-description">6月份 0.8%</p>
+                <p class="section-description">5月份 1.5%</p>
+                <p class="section-description">4月份 7.2%</p>
+                <p class="section-description">3月份 6.9%</p>
+                <p class="section-description">2月份 2.4%</p>
+                <p class="section-description">历史数据仅供参考，本网站为非公开非盈利网站，请勿将数据用于其他商业用途。</p>
+            </div>
+        </div>
+        
+        <!-- 返回按钮 -->
+        <button class="back-button">返回主页</button>
+    </div>
+
+    <script src="feature-script.js"></script>
+    <script src="return-test.js"></script>
+</body>
+</html>
